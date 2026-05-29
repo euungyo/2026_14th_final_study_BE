@@ -4,6 +4,7 @@ import com.example.demo.api.user.dto.UserResponseDTO;
 import com.example.demo.api.user.service.UserService;
 import com.example.demo.global.exception.CustomException;
 import com.example.demo.global.exception.ErrorCode;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     private final UserService userService;
 
+    @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/me")
     public ResponseEntity<UserResponseDTO> getMyInfo(Authentication authentication) {
         Long userId = (Long) authentication.getPrincipal();
@@ -33,6 +35,7 @@ public class UserController {
                 .body(response);
     }
 
+    @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/{userId}")
     public ResponseEntity<UserResponseDTO> getUserInfo(
             @PathVariable Long userId,

@@ -1,4 +1,4 @@
-package com.example.demo.global.security;
+package com.example.demo.global.config;
 
 import com.example.demo.global.exception.CustomAccessDeniedHandler;
 import com.example.demo.global.exception.CustomAuthenticationEntryPoint;
