@@ -4,10 +4,17 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
+import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@OpenAPIDefinition(info=@Info(title = "API명세서", version="v1"))
+@OpenAPIDefinition(
+        info = @Info(title = "API명세서", version = "v1"),
+        servers = {
+                @Server(url = "https://202614thfinalstudybe-production.up.railway.app", description = "Production"),
+                @Server(url = "http://localhost:8080", description = "Local")
+        }
+)
 @SecurityScheme(
         name="bearerAuth",
         type = SecuritySchemeType.HTTP,
